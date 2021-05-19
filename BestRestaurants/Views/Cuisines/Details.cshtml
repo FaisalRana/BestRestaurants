@@ -1,0 +1,15 @@
+@using BestRestaurants.Models;
+@model BestRestaurants.Models.Cuisine;
+
+<h2>Cuisine Details:</h2>
+<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
+
+
+@if (@ViewBag.AllRestaurants.Count == 0)
+{
+  <p>There are no restaurants of this cuisine yet.</p>
+}
+@foreach (Restaurant restaurant in @ViewBag.AllRestaurants)
+{
+  <li>@Html.ActionLink($"{restaurant.Name}","Details", "Restaurants", new { id = restaurant.RestaurantId})</li>
+}
